@@ -5,6 +5,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// ROOT TEST (Render boş sayfa sorununu çözer)
 app.get("/", (req, res) => {
   res.send("Vali backend çalışıyor 🚀");
 });
@@ -24,7 +25,9 @@ app.post("/generate", (req, res) => {
   res.json({ results });
 });
 
-const PORT = 3000;
+// ⚠️ Render uyumlu PORT
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
-  console.log(`Backend çalışıyor: http://localhost:${PORT}`);
+  console.log(`Backend çalışıyor: ${PORT}`);
 });
